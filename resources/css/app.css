@@ -1,0 +1,95 @@
+@import 'tailwindcss';
+
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Anton', Impact, sans-serif;
+
+  --color-binary-red: #bf0e18;
+  --color-binary-red-dark: #72070d;
+  --color-binary-ink: #090909;
+  --color-binary-gray: #d6d6d6;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen overflow-x-hidden font-sans text-binary-ink;
+    background:
+      radial-gradient(circle at 12% 12%, rgba(191, 14, 24, .18), transparent 26%),
+      radial-gradient(circle at 88% 30%, rgba(191, 14, 24, .12), transparent 28%),
+      linear-gradient(135deg, #fff 0%, #f6f6f6 52%, #dedede 100%);
+  }
+
+  /* grid tipis di background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(0, 0, 0, .025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, .025) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, transparent, black 12%, black 82%, transparent);
+  }
+
+  h1, h2, h3 {
+    @apply font-display tracking-wide;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-2xl border border-black/20 bg-white/75 backdrop-blur-md;
+    box-shadow: 0 22px 60px rgba(0, 0, 0, .14), inset 0 1px 0 rgba(255, 255, 255, .9);
+  }
+
+  .nav-link {
+    @apply rounded-md px-4 py-2 font-display text-xl tracking-wide text-black transition duration-200;
+  }
+  .nav-link:hover,
+  .nav-link.is-active {
+    @apply bg-binary-red text-white;
+    box-shadow: 0 8px 0 #72070d, 0 18px 30px rgba(191, 14, 24, .25);
+    transform: translateY(-4px) rotateX(8deg);
+  }
+
+  .btn-3d {
+    @apply cursor-pointer border-0 px-5 py-2 font-display text-3xl tracking-wide transition duration-200;
+    background: linear-gradient(145deg, #eee, #cfcfcf);
+    box-shadow: 0 8px 0 #9c9c9c, 0 18px 30px rgba(0, 0, 0, .18);
+  }
+  .btn-3d:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 0 #9c9c9c, 0 24px 40px rgba(0, 0, 0, .22);
+  }
+
+  /* placeholder gambar yang berkilau (hapus kalau sudah pakai foto asli) */
+  .shimmer {
+    background: linear-gradient(110deg, #d1d1d1 8%, #eee 18%, #d1d1d1 33%);
+    background-size: 220% 100%;
+    animation: shine 2.6s linear infinite;
+  }
+
+  .reveal {
+    @apply translate-y-6 opacity-0 transition duration-700 ease-out;
+  }
+  .reveal.show {
+    @apply translate-y-0 opacity-100;
+  }
+}
+
+@keyframes shine {
+  to { background-position-x: -220%; }
+}
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
