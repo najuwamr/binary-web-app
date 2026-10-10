@@ -51,7 +51,7 @@ php -r "echo bin2hex(random_bytes(32)), PHP_EOL;"
 
 Simpan nilainya sebagai `LOGIN_KEY=...`, lalu jalankan `php artisan config:clear`. Halaman login tersedia di `/<LOGIN_KEY>/login`; `/login` biasa akan menghasilkan 404. Gunakan HTTPS di production. URL rahasia ini hanya lapisan tambahan dan tidak menggantikan autentikasi akun.
 
-Setelah login berhasil, Fortify mengarahkan pengguna ke `/admin/dashboard`. Route admin dilindungi middleware `auth` dan `admin`; saat ini semua akun yang berhasil login dianggap admin. Pendaftaran Fortify dinonaktifkan, jadi buat akun secara manual melalui Tinker. Route yang tersedia: `/admin/dashboard`, `/admin/berita`, `/admin/buletin`, dan `/admin/arsip`.
+Setelah login berhasil, Fortify mengarahkan pengguna ke `/admin/dashboard`. Route admin dilindungi middleware `auth` dan `admin`; saat ini semua akun yang berhasil login dianggap admin. Pendaftaran Fortify dinonaktifkan, jadi buat akun secara manual melalui Tinker. Route yang tersedia: `/admin/dashboard`, `/admin/berita`, `/admin/buletin`, dan `/admin/arsip`. Manajemen berita mendukung tambah, detail, ubah, arsip, serta rich text basic. Gambar berita disimpan pada disk `public`; jalankan `php artisan storage:link` agar bisa diakses melalui web.
 
 ## Contributing
 

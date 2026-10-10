@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('ringkasan')->nullable();
             $table->string('gambar')->nullable();
             $table->string('caption_image')->nullable();
+            $table->boolean('is_archived')->default(false);
             $table->timestamps();
         });
     }

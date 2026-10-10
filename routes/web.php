@@ -15,10 +15,14 @@ Route::middleware(['auth', 'admin'])
     ->group(function (): void {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::get('/berita', [NewsController::class, 'index'])->name('berita.index');
-        Route::get('/berita/create', [NewsController::class, 'create'])->name('berita.create');
+        Route::post('/berita/{article}/archive', [NewsController::class, 'archive'])
+            ->name('berita.archive');
+        Route::resource('berita', NewsController::class)
+            ->except(['destroy'])
+            ->parameters(['berita' => 'article']);
 
-        Route::get('/buletin', [BulletinController::class, 'index'])->name('buletin.index');
-        
+        Route::resource('buletin', BulletinController::class)
+            ->parameters(['buletin' => 'buletin']);
+
         Route::get('/arsip', [ArchiveController::class, 'index'])->name('arsip.index');
     });

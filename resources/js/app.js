@@ -1,6 +1,12 @@
 import './bootstrap';
 import Swal from 'sweetalert2';
 
+if (document.querySelector('[data-pdf-flipbook]')) {
+  import('./bulletin-flipbook').catch((error) => {
+    console.error('Flipbook initialization failed.', error);
+  });
+}
+
 window.Swal = Swal;
 
 const warna = {

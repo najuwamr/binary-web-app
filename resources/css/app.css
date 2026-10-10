@@ -84,6 +84,57 @@
   .reveal.show {
     @apply translate-y-0 opacity-100;
   }
+
+  [data-rich-editor] p,
+  [data-rich-editor] div,
+  .rich-content p,
+  .rich-content div {
+    @apply mb-4;
+  }
+
+  [data-rich-editor] ol,
+  [data-rich-editor] ul,
+  .rich-content ol,
+  .rich-content ul {
+    @apply mb-4 pl-6;
+  }
+
+  [data-rich-editor] ol,
+  .rich-content ol {
+    list-style: decimal;
+  }
+
+  [data-rich-editor] ul,
+  .rich-content ul {
+    list-style: disc;
+  }
+
+  [data-rich-editor] li,
+  .rich-content li {
+    @apply my-1;
+  }
+
+  .rich-content strong,
+  .rich-content b {
+    @apply font-bold;
+  }
+
+  .rich-content em,
+  .rich-content i {
+    @apply italic;
+  }
+
+  .rich-content u {
+    @apply underline;
+  }
+
+  .bulletin-page {
+    @apply flex h-full w-full items-center justify-center overflow-hidden bg-white p-2;
+  }
+
+  .bulletin-page-image {
+    @apply h-full w-full object-contain;
+  }
 }
 
 @keyframes shine {

@@ -8,6 +8,7 @@ class Bulletin extends Model
 {
     protected $fillable = [
         'judul',
+        'deskripsi',
         'edisi',
         'tahun',
         'sampul',

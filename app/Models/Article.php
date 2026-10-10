@@ -13,7 +13,15 @@ class Article extends Model
         'ringkasan',
         'gambar',
         'caption_image',
+        'is_archived',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'is_archived' => 'boolean',
+        ];
+    }
 
     public function tags()
     {
